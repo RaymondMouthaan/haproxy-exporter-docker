@@ -8,7 +8,7 @@ ARG VERSION=0.9.0
 
 RUN apk --no-cache add --virtual build-dependencies wget ca-certificates \
     && mkdir -p /tmp/install /tmp/dist \
-    && wget -O /tmp/install/node_exporter.tar.gz https://github.com/prometheus/haproxy_exporter/releases/download/v$VERSION/haproxy_exporter-$VERSION.linux-$ARCH.tar.gz \
+    && wget -O /tmp/install/haproxy_exporter.tar.gz https://github.com/prometheus/haproxy_exporter/releases/download/v$VERSION/haproxy_exporter-$VERSION.linux-$ARCH.tar.gz \
     && apk del build-dependencies \
     && apk add --no-cache libc6-compat \
     && cd /tmp/install \
@@ -25,4 +25,4 @@ RUN chmod +x /docker-entrypoint.sh
 EXPOSE     9101
 
 ENTRYPOINT  [ "/docker-entrypoint.sh" ]
-CMD [ "/bin/node_exporter" ]
+CMD [ "/bin/haproxy_exporter" ]
