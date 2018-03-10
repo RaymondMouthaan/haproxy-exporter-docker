@@ -16,7 +16,6 @@ RUN apk --no-cache add --virtual build-dependencies wget ca-certificates \
     && mv haproxy_exporter /bin/haproxy_exporter \
     && rm -rf /tmp/install
 
-RUN mkdir /etc/haproxy-exporter
 ENV HAPROXY_EXPORTER_BIN=/bin/haproxy_exporter
 
 COPY ./docker-entrypoint.sh /docker-entrypoint.sh
